@@ -1,0 +1,14 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/layouts/mainModal.xhtml">
+
+    <ui:define name="content">
+        <p:panel header="#{msgs['login.error.cabezal']}">
+            <p:staticMessage severity="error" summary="ERROR" detail="#{msgs['login.error.texto']}" />
+            <p:linkButton outcome="login" value="#{msgs['login']}" styleClass="p-my-2" />
+        </p:panel>
+    </ui:define>
+</ui:composition>
