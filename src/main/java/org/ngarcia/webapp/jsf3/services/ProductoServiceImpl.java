@@ -20,7 +20,7 @@ public class ProductoServiceImpl implements ProductoService {
    private CrudRepository<Categoria> repositoryCategoria;
 
    @Override
-   @PermitAll
+   @PermitAll //es público
    public List<Producto> listar() {
       return repository.listar();
    }

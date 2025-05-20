@@ -81,7 +81,7 @@ public class ProductoController {
             service.porId(id).ifPresent(p -> this.producto = p);
          }
       }
-      System.out.println("PRODUCTO COMUN:" + producto);
+      //System.out.println("PRODUCTO COMUN:" + producto);
       return this.producto;
    }
 
@@ -111,9 +111,9 @@ public class ProductoController {
       this.listado = service.listar();
 
       //el redirect es importante para evitar que se ejecute más de una vez (creo)
-      //return "index.xhtml?faces-redirect=true";
+      //return "indexNoModal.xhtml?faces-redirect=true";
       //cuando emprezamos a utilizar la validación con ajax lo cambiamos
-      return "index.xhtml";
+      return "indexNoModal.xhtml";
    }
 
    public String editar(Long id) {
@@ -132,9 +132,9 @@ public class ProductoController {
 
       this.listado = service.listar();
 
-      //return "index.xhtml?faces-redirect=true";
+      //return "indexNoModal.xhtml?faces-redirect=true";
       //cuando emprezamos a utilizar la validación con ajax lo cambiamos
-      //return "index.xhtml";
+      //return "indexNoModal.xhtml";
    }
 
    public void buscar() {
