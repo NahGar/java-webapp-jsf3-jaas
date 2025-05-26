@@ -1,10 +1,14 @@
 package org.ngarcia.webapp.jsf3.services;
 
+import jakarta.annotation.Resource;
 import jakarta.annotation.security.*;
+import jakarta.ejb.SessionContext;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import org.ngarcia.webapp.jsf3.entities.*;
 import org.ngarcia.webapp.jsf3.repositories.*;
+
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,9 +23,26 @@ public class ProductoServiceImpl implements ProductoService {
    @Inject
    private CrudRepository<Categoria> repositoryCategoria;
 
+   @Resource
+   private SessionContext ctx;
+
    @Override
    @PermitAll //es público
    public List<Producto> listar() {
+
+      Principal usuario = ctx.getCallerPrincipal();
+      String username = usuario.getName();
+      System.out.println("username:"+username);
+      if(ctx.isCallerInRole("ADMIN")) {
+         System.out.println("ES ADMIN");
+      } else if (ctx.isCallerInRole("USER")) {
+         System.out.println("ES USER");
+      }
+      else {
+         System.out.println("ES ANONIMO");
+         //throw new SecurityException("Tiene que loguearse");
+      }
+
       return repository.listar();
    }
 
